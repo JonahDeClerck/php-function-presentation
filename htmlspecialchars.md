@@ -13,10 +13,15 @@ style: |
        margin-left: 1050px;
     }
 footer: htmlspecialchars();
+
+
+
+
 ---
-<!--_: ""-->
+<!--_footer: ""-->
 # <!--fit--> htmlspecialchars();
 ---
+
 </style>
 
 ```php
@@ -27,16 +32,18 @@ htmlspecialchars(string, flags, character-set, double_encode );
 <div class="columns">
 <div>
 
-* String 
-* Flags 
-* Character set 
-* Double encode 
+- String 
+- Flags 
+<br>
+- Character set 
+- Double encode 
 
 </div>
 <div class="nld">
 
  :arrow_right: Input om te converteren  
- :arrow_right: Optioneel, veranderd behaviour ivm:  
+ :arrow_right: Optioneel, veranderd behaviour ivm: quotes, invalid encoding & doctype
+ 
  :arrow_right: Bv. ```EUC-JP``` voor Japans, default ```UTF_8```
  :arrow_right: Non-special characters ook encoden?
 
@@ -55,15 +62,15 @@ htmlspecialchars(string, flags, character-set, double_encode );
 ### User input verwerken:
 <br>
 
-* String doorgeven naar url 
-* User input naar database sturen
+- String doorgeven naar url 
+- User input naar database sturen
 
 </div>
 <div>
 <br><br><br>
 
- :arrow_right: XSS 
- :arrow_right: SQL injection
+ :bangbang: XSS 
+ :bangbang: SQL injection
 
 </div>
 
@@ -94,9 +101,13 @@ htmlspecialchars(string, flags, character-set, double_encode );
 </div>
 </div>
 
-* Speciale characters worden "geneutraliseerd"
-  (replaced door niet-speciale characters)
-* Kan je eventueel nog gaan filteren, alles dat tussen ```%``` en ```;``` staat weghalen
+- Speciale characters worden <i>"geneutraliseerd"</i>
+- Kan je eventueel nog gaan filteren, ```/```'s en alles dat tussen ```%``` en ```;``` staat weghalen.
+
+<br>
+
+<sub>Output echo en var_dumpen geeft gewoon terugde originele characters weer, dus gebruik ```htmlentities()``` </sub>
+
 ---
 # :computer: Example
 
@@ -122,13 +133,12 @@ $output = htmlspecialchars(
 ---
 # :book: Sources
 
-
-- [W3schools (Duh)](https://www.w3schools.com/php/func_string_htmlspecialchars.asp)
-- [Php manual](https://www.php.net/manual/en/function.htmlspecialchars.php)
+- [Php manual (duh)](https://www.php.net/manual/en/function.htmlspecialchars.php)
+- [W3schools ](https://www.w3schools.com/php/func_string_htmlspecialchars.asp)
 - [deze Quora thread](https://www.quora.com/When-should-I-use-the-htmlspecialchars-function-in-PHP)
  <br>
 
 # :link: Links
 
 
-- [Github repo (.md file van presentatie :wink: & code van in't voorbeeld)]()
+- [Github repo (.md file van presentatie :star_struck: & code van in't voorbeeld)](https://github.com/JonahDeClerck/php-function-presentation)
