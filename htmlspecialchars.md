@@ -14,9 +14,6 @@ style: |
     }
 footer: htmlspecialchars();
 
-
-
-
 ---
 <!--_footer: ""-->
 # <!--fit--> htmlspecialchars();
@@ -83,7 +80,7 @@ htmlspecialchars(string, flags, character-set, double_encode );
 ---
 # :symbols: Output
 
-<br>
+<br><br>
 
 <div class="columns">
 <div>
@@ -100,13 +97,14 @@ htmlspecialchars(string, flags, character-set, double_encode );
 
 </div>
 </div>
+<br>
 
 - Speciale characters worden <i>"geneutraliseerd"</i>
 - Kan je eventueel nog gaan filteren, ```/```'s en alles dat tussen ```%``` en ```;``` staat weghalen.
 
 <br>
 
-<sub>Output echo en var_dumpen geeft gewoon terugde originele characters weer, dus gebruik ```htmlentities()``` </sub>
+<sub>Output echo en var_dumpen geeft gewoon terug de originele characters weer, dus gebruik ```htmlentities()``` </sub>
 
 ---
 # :computer: Example
@@ -117,19 +115,21 @@ htmlspecialchars(string, flags, character-set, double_encode );
     <input type="field" name="input">
 </form>
 ```
-```php
-$output = htmlspecialchars(
+```php 
+// 2x uitvoeren is enkel voor weergave (omdat browser terug decodeerd)
+$output = htmlspecialchars(htmlspecialchars(      
 
     $_POST['input'],    //Input
     ENT_QUOTES,         //Flags
     'UTF-8',            //Character-set
     FALSE               //Double encode
-);
+));
 ```
 
 ```html
-<a><?=htmlentities($output)?></a>
+<a><?=$output?></a>
 ```
+<!-- uitleggen waarom er 2x htmlspecialchars gedaan wordt. -->
 ---
 # :book: Sources
 

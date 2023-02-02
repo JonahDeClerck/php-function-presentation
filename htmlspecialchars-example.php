@@ -1,12 +1,15 @@
 <?php
+function parseInput(array $array): string
+{ 
+    $string = htmlspecialchars(htmlspecialchars(
+        $array['input'],
+        ENT_QUOTES,
+        'UTF-8',
+        TRUE
+    ));
 
-$output = htmlspecialchars(
-    $_POST['input'],
-    ENT_QUOTES,
-    'UTF-8',
-    TRUE
-);
-
+    return $string;
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,12 +22,13 @@ $output = htmlspecialchars(
 </head>
 <body>
 
-    <form Method="post">
+    <form Method="post" action="parseInput($_POST['input'])">
         <label for="input">Input:</label>
         <input type="field" name="input">
     </form>
 
-    <a><?=htmlentities($output)?></a>
-
+    <?php if(isset($_POST['input'])): ?>
+        <a><?=$output?></a> 
+    <?php endif ?>
 </body>
 </html>
